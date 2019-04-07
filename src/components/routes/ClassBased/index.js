@@ -16,9 +16,6 @@ class ClassBased extends Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    console.log('did update')
-    console.log(prevState.todos)
-    console.log(this.state.todos)
     if (!isEqual(this.state.todos, prevState.todos))
       window.localStorage.setItem(
         'classBased',
