@@ -7,10 +7,10 @@ const Navigation = () => {
   return (
     <NavContainer>
       <Container>
-        <Link to="/class">Class</Link>
-        <Link to="/class-hoc">HOC</Link>
-        <Link to="/hooks">Hooks</Link>
-        <Link to="/hooks-custom">Custom Hooks</Link>
+        <StyledLink to="/class">Class</StyledLink>
+        <StyledLink to="/class-hoc">HOC</StyledLink>
+        <StyledLink to="/hooks">Hooks</StyledLink>
+        <StyledLink to="/hooks-custom">Custom Hooks</StyledLink>
       </Container>
     </NavContainer>
   )
@@ -19,5 +19,11 @@ const Navigation = () => {
 export default Navigation
 
 const NavContainer = ({ children }) => (
-  <div className="border-b border-grey-light">{children}</div>
+  <div className="border-b border-grey-light py-3">{children}</div>
+)
+
+const StyledLink = ({ children, ...props }) => (
+  <Link {...props} className="no-underline text-grey-darker mr-4">
+    {children}
+  </Link>
 )
