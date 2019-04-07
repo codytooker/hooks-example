@@ -1,7 +1,15 @@
-import React from "react";
+import React from 'react'
+
+import { Page, Container } from '../../ui/layout'
 
 const Home = () => {
-  return <div>This is home route</div>;
-};
+  return (
+    <Page>
+      <Container>
+        <p>Click a link above to get started</p>
+      </Container>
+    </Page>
+  )
+}
 
-export default Home;
+export default Home
