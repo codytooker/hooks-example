@@ -10,6 +10,7 @@ const Navigation = () => {
         <Link to="/class">Class</Link>
         <Link to="/class-hoc">HOC</Link>
         <Link to="/hooks">Hooks</Link>
+        <Link to="/hooks-custom">Custom Hooks</Link>
       </Container>
     </NavContainer>
   )
