@@ -7,7 +7,7 @@ const Navigation = () => {
   return (
     <NavContainer>
       <Container>
-        <Link to="/class">Class Based</Link>
+        <Link to="/class">Class</Link>
         <Link to="/class-hoc">HOC</Link>
       </Container>
     </NavContainer>

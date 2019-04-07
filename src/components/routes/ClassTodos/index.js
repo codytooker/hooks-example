@@ -4,13 +4,13 @@ import isEqual from 'lodash/isEqual'
 import { Page, Container, Title } from '../../ui/layout'
 import Todos from '../../ui/Todos'
 
-class ClassBased extends Component {
+class ClassTodos extends Component {
   state = {
     todos: [],
   }
 
   componentDidMount() {
-    const todos = JSON.parse(window.localStorage.getItem('classBased')) || []
+    const todos = JSON.parse(window.localStorage.getItem('classTodos')) || []
 
     this.setState({ todos })
   }
@@ -18,7 +18,7 @@ class ClassBased extends Component {
   componentDidUpdate(prevProps, prevState) {
     if (!isEqual(this.state.todos, prevState.todos))
       window.localStorage.setItem(
-        'classBased',
+        'classTodos',
         JSON.stringify(this.state.todos)
       )
   }
@@ -45,7 +45,7 @@ class ClassBased extends Component {
     return (
       <Page>
         <Container>
-          <Title>Class Based Todo's</Title>
+          <Title>Class Todo's</Title>
           <Todos
             todos={todos}
             addTodo={this.handleSubmit}
@@ -57,4 +57,4 @@ class ClassBased extends Component {
   }
 }
 
-export default ClassBased
+export default ClassTodos

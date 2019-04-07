@@ -3,7 +3,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom'
 
 import Navigation from './components/ui/Navigation'
 import Home from './components/routes/Home'
-import ClassBased from './components/routes/ClassBased'
+import ClassTodos from './components/routes/ClassTodos'
 import HocTodos from './components/routes/HocTodos'
 
 const App = () => (
@@ -11,7 +11,7 @@ const App = () => (
     <Navigation />
     <Switch>
       <Route exact path="/" component={Home} />
-      <Route exact path="/class" component={ClassBased} />
+      <Route exact path="/class" component={ClassTodos} />
       <Route exact path="/class-hoc" component={HocTodos} />
     </Switch>
   </BrowserRouter>
