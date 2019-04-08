@@ -75,6 +75,11 @@ export default compose(
     componentDidMount() {
       this.props.fetchTodos()
     },
+    componentWillUpdate(nextProps) {
+      if (this.props.userId !== nextProps.userId) {
+        this.props.fetchTodos()
+      }
+    },
   }),
   withProps(({ todos }) => ({
     urgentTodos: todos.filter((t) => /urgent/i.test(t)).length,
