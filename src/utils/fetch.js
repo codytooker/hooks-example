@@ -3,7 +3,12 @@ import removeAtIndex from './removeAtIndex'
 export const fetchTodos = (userId, type) => {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
-      resolve(JSON.parse(window.localStorage.getItem(`${type}Todos`)))
+      const raw = window.localStorage.getItem(`${type}Todos`)
+      if (raw) resolve(JSON.parse(raw))
+      else {
+        window.localStorage.setItem(`${type}Todos`, JSON.stringify([]))
+        resolve([])
+      }
     }, 150)
   })
 }
