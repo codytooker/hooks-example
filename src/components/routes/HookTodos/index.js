@@ -21,9 +21,9 @@ const reducer = (state, action) => {
   }
 }
 
-const initialTodos = JSON.parse(window.localStorage.getItem('hookTodos')) || []
-
 const HookTodos = ({ todos, addTodo, removeTodo }) => {
+  const initialTodos =
+    JSON.parse(window.localStorage.getItem('hookTodos')) || []
   const [state, dispatch] = useReducer(reducer, { todos: initialTodos })
 
   useEffect(() => {
@@ -33,7 +33,7 @@ const HookTodos = ({ todos, addTodo, removeTodo }) => {
   return (
     <Page>
       <Container>
-        <Title>HOC Todo's</Title>
+        <Title>Hooks Todos</Title>
         <Todos
           todos={state.todos}
           addTodo={(todo) => dispatch({ type: 'add', payload: todo })}

@@ -10,6 +10,7 @@ const Navigation = () => {
         <StyledLink to="/class">Class</StyledLink>
         <StyledLink to="/class-hoc">HOC</StyledLink>
         <StyledLink to="/hooks">Hooks</StyledLink>
+        <StyledLink to="/hooks-async">Hooks Async</StyledLink>
         <StyledLink to="/hooks-custom">Custom Hooks</StyledLink>
       </Container>
     </NavContainer>

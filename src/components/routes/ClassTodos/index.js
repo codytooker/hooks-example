@@ -45,7 +45,7 @@ class ClassTodos extends Component {
     return (
       <Page>
         <Container>
-          <Title>Class Todo's</Title>
+          <Title>Class Todos</Title>
           <Todos
             todos={todos}
             addTodo={this.handleSubmit}

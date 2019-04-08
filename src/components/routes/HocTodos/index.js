@@ -8,7 +8,7 @@ const HocTodos = ({ todos, addTodo, removeTodo }) => {
   return (
     <Page>
       <Container>
-        <Title>HOC Todo's</Title>
+        <Title>HOC Todos</Title>
         <Todos todos={todos} addTodo={addTodo} removeTodo={removeTodo} />
       </Container>
     </Page>
