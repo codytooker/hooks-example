@@ -1,6 +1,6 @@
-import React, { useState } from 'react'
+import React, { useState, memo } from 'react'
 
-const Todos = ({ todos, addTodo, removeTodo, isLoading }) => {
+const Todos = memo(({ todos, addTodo, removeTodo, isLoading }) => {
   const [newTodo, updateNewTodo] = useState('')
 
   const handleSubmit = (e) => {
@@ -11,6 +11,8 @@ const Todos = ({ todos, addTodo, removeTodo, isLoading }) => {
     addTodo(newTodo)
     updateNewTodo('')
   }
+
+  console.log('new todos render')
 
   return (
     <div className="border border-grey-light bg-grey-lighter rounded p-4 relative">
@@ -49,6 +51,6 @@ const Todos = ({ todos, addTodo, removeTodo, isLoading }) => {
       </form>
     </div>
   )
-}
+})
 
 export default Todos

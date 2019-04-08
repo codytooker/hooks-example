@@ -4,26 +4,32 @@ import { Page, Container, Title } from '../../ui/layout'
 import Todos from '../../ui/Todos'
 import * as todosApi from '../../../utils/fetch'
 
+let stats = {
+  withMemo: 0,
+  withoutMemo: 0,
+}
+
 const HookTodosAsync = (userId = 984) => {
   const [todos, setTodos] = useState([])
   const [isLoading, setIsLoading] = useState(true)
-  const [lastUpdated, setLastUpdated] = useState(0)
+  const [lastChanged, setLastChanged] = useState(0)
+  const [unrelatedState, setUnrelatedState] = useState(0)
 
   const addTodo = useCallback(
     (todo) => {
       setIsLoading(true)
-      todosApi.addTodo(userId, 'hook', todo).then(() => {
-        setLastUpdated(Date.now())
-      })
+      todosApi
+        .addTodo(userId, 'hook', todo)
+        .then(() => setLastChanged(Date.now()))
     },
     [userId]
   )
 
   const removeTodo = useCallback(
     (i) => {
-      todosApi.removeTodo(userId, 'hook', i).then(() => {
-        setLastUpdated(Date.now())
-      })
+      todosApi
+        .removeTodo(userId, 'hook', i)
+        .then(() => setLastChanged(Date.now()))
     },
     [userId]
   )
@@ -34,27 +40,42 @@ const HookTodosAsync = (userId = 984) => {
       setTodos(todos)
       setIsLoading(false)
     })
-  }, [userId, lastUpdated])
+  }, [userId, lastChanged])
 
   // expensive calculations can be memoized so they're only run when necessary
-  const urgentTodos = useMemo(
-    () =>
-      todos.filter((todo) => {
-        console.log('running urgentTodos memoized')
-        return /urgent/i.test(todo)
-      }).length,
-    [lastUpdated]
-  )
+  const urgentTodos = useMemo(() => {
+    stats.withMemo = stats.withMemo + 1
+    return todos.filter((todo) => {
+      return /urgent/i.test(todo)
+    }).length
+  }, [todos])
 
-  const urgentTodosNotMemoized = todos.filter((todo) => {
-    console.log('running urgentTodos without memo')
-    return /urgent/i.test(todo)
-  }).length
+  const urgentTodosNotMemoized = (function() {
+    stats.withoutMemo = stats.withoutMemo + 1
+    return todos.filter((todo) => {
+      return /urgent/i.test(todo)
+    }).length
+  })()
+
+  console.log(stats)
 
   return (
     <Page>
       <Container>
         <Title>Hooks Async Todos</Title>
+        <button
+          style={{
+            backgroundColor: 'lightblue',
+            border: '1px solid darkblue',
+            color: 'darkblue',
+            padding: '5px',
+            borderRadius: '5px',
+            margin: '0 0 10px',
+          }}
+          onClick={() => setUnrelatedState(Date.now())}
+        >
+          Unrelated state change
+        </button>
         <p className="red">
           <strong>URGENT TODOS: </strong>
           {urgentTodos}
