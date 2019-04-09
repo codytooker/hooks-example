@@ -1,4 +1,4 @@
-import React, { useReducer, useEffect } from 'react'
+import React, { useReducer, useEffect, useState } from 'react'
 
 import { Page, Container, Title } from '../../ui/layout'
 import Todos from '../../ui/Todos'
@@ -21,24 +21,32 @@ const reducer = (state, action) => {
   }
 }
 
-const initialTodos = JSON.parse(window.localStorage.getItem('hookTodos')) || []
-
-const HookTodos = ({ todos, addTodo, removeTodo }) => {
+const HookTodos = () => {
+  const initialTodos =
+    JSON.parse(window.localStorage.getItem('hookTodos')) || []
   const [state, dispatch] = useReducer(reducer, { todos: initialTodos })
 
   useEffect(() => {
     window.localStorage.setItem('hookTodos', JSON.stringify(state.todos))
   }, [state.todos])
 
+  const [unrelatedState, setUnrelatedState] = useState(0)
+
+  const addTodo = (todo) => dispatch({ type: 'add', payload: todo })
+
+  const removeTodo = (index) => dispatch({ type: 'remove', payload: index })
+
   return (
     <Page>
       <Container>
-        <Title>HOC Todo's</Title>
-        <Todos
-          todos={state.todos}
-          addTodo={(todo) => dispatch({ type: 'add', payload: todo })}
-          removeTodo={(index) => dispatch({ type: 'remove', payload: index })}
-        />
+        <Title>Hooks Todos</Title>
+        <button
+          className="bg-blue-lighter border border-blue-darker text-blue-darker p-2 mb-2 rounded"
+          onClick={() => setUnrelatedState(Date.now())}
+        >
+          Unrelated state change
+        </button>
+        <Todos todos={state.todos} addTodo={addTodo} removeTodo={removeTodo} />
       </Container>
     </Page>
   )

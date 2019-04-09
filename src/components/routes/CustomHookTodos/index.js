@@ -10,7 +10,7 @@ const CustomHookTodos = () => {
   return (
     <Page>
       <Container>
-        <Title>HOC Todo's</Title>
+        <Title>Custom Hooks Todos</Title>
         <Todos todos={todos} addTodo={addTodo} removeTodo={removeTodo} />
       </Container>
     </Page>
