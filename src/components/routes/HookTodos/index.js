@@ -41,14 +41,7 @@ const HookTodos = () => {
       <Container>
         <Title>Hooks Todos</Title>
         <button
-          style={{
-            backgroundColor: 'lightblue',
-            border: '1px solid darkblue',
-            color: 'darkblue',
-            padding: '5px',
-            borderRadius: '5px',
-            margin: '0 0 10px',
-          }}
+          className="bg-blue-lighter border border-blue-darker text-blue-darker p-2 mb-2 rounded"
           onClick={() => setUnrelatedState(Date.now())}
         >
           Unrelated state change
