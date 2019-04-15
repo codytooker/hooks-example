@@ -13,6 +13,7 @@ const Navigation = () => {
         <StyledLink to="/hooks">Hooks</StyledLink>
         <StyledLink to="/hooks-async">Hooks Async</StyledLink>
         <StyledLink to="/hooks-custom">Custom Hooks</StyledLink>
+        <StyledLink to="/counter">Counter</StyledLink>
       </Container>
     </NavContainer>
   )

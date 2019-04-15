@@ -1,4 +1,5 @@
 import React, { useState, memo } from 'react'
+import Button from '../Button'
 
 const Todos = memo(({ todos, addTodo, removeTodo, isLoading }) => {
   const [newTodo, updateNewTodo] = useState('')
@@ -42,12 +43,13 @@ const Todos = memo(({ todos, addTodo, removeTodo, isLoading }) => {
           ))}
         </div>
       )}
-      <form onSubmit={handleSubmit}>
+      <form className="flex" onSubmit={handleSubmit}>
         <input
+          className="mr-4 px-3"
           value={newTodo}
           onChange={(e) => updateNewTodo(e.target.value)}
         />
-        <button type="submit">Add Todo</button>
+        <Button type="submit">Add Todo</Button>
       </form>
     </div>
   )

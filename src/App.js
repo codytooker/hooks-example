@@ -9,6 +9,7 @@ import HocTodosAsync from './components/routes/HocTodosAsync'
 import HookTodos from './components/routes/HookTodos'
 import HooksTodosAsync from './components/routes/HookTodosAsync'
 import CustomHookTodos from './components/routes/CustomHookTodos'
+import Counter from './components/routes/Counter'
 
 const App = () => (
   <BrowserRouter>
@@ -21,6 +22,7 @@ const App = () => (
       <Route exact path="/hooks" component={HookTodos} />
       <Route exact path="/hooks-async" component={HooksTodosAsync} />
       <Route exact path="/hooks-custom" component={CustomHookTodos} />
+      <Route exact path="/counter" component={Counter} />
     </Switch>
   </BrowserRouter>
 )

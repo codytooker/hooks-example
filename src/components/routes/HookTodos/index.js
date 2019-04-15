@@ -44,7 +44,7 @@ const HookTodos = () => {
           className="bg-blue-lighter border border-blue-darker text-blue-darker p-2 mb-2 rounded"
           onClick={() => setUnrelatedState(Date.now())}
         >
-          Unrelated state change
+          {unrelatedState}
         </button>
         <Todos todos={state.todos} addTodo={addTodo} removeTodo={removeTodo} />
       </Container>
