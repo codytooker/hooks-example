@@ -74,7 +74,10 @@ export default compose(
       }
     },
   }),
-  withProps(({ todos }) => ({
-    urgentTodos: todos.filter((t) => /urgent/i.test(t)).length,
-  }))
+  withProps(({ todos }) => {
+    console.log('computing urgentTodos')
+    return {
+      urgentTodos: todos.filter((t) => /urgent/i.test(t)).length,
+    }
+  })
 )(HocTodosAsync)
